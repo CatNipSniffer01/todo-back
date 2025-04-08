@@ -1,4 +1,3 @@
-// api/app.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -14,11 +13,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Register routes – note that for auth routes, we’re using the '/api' prefix.
 app.use('/api', authRoutes);
-app.use('/tasklists', tasklistRoutes);
-app.use('/tasks', taskRoutes);
-app.use('/users', userRoutes);
+app.use('/api/tasklists', tasklistRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 7096;
 sequelize.sync().then(() => {
